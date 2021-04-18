@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'Registrar-se' | uppercase}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="login" [formGroup]="signUpForm">
+    <h3>Registrar-se</h3>
+    <div>
+      <input type="text" class="formControl" placeholder="E-mail" formControlName="email">
+    </div>
+
+    <div>
+      <input type="password" class="formControl" placeholder="Senha" formControlName="password">
+    </div>
+
+    <div class="ion-padding-top">
+      <input type="button" class="btn-primary" value="Enviar" (click)="onSubmit(signUpForm)">
+    </div>
+
+    <div class="have-account">
+      <span>Já tem uma conta? <a class="redirect" routerLink="/login">Entrar</a></span>
+    </div>
+  </div>
+
+</ion-content>

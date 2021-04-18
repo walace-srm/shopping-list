@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{key ? 'Atualizar Item' : 'Adicionar Item'}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="itemForm">
+    <div class="padding">
+      <ion-item>
+        <ion-input placeholder="Novo do item" formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <div>
+          <input type="button" class="button" value="-" (click)="decrement()"/>
+          <input
+            type="number" min="0" max="999" [value]="counter" formControlName="quantity"
+            style="text-align: center;" (ngModelChange)="inputEvent($event)"/>
+          <input type="button" value="+" (click)="increment()"/>
+        </div>
+      </ion-item>
+      <!-- TODO: Remover depois que vericar o input number -->
+      <!--      <ion-item>-->
+      <!--        <ion-input type="number" placeholder="Quantidade" formControlName="quantity"></ion-input>-->
+      <!--      </ion-item>-->
+    </div>
+    <div class="ion-padding" style="display: flex; justify-content: flex-end;">
+      <ion-button color="medium" (click)="goToHome()">Cancelar</ion-button>
+      <ion-button class="background" (click)="onSubmit(itemForm)">Cadastrar</ion-button>
+    </div>
+  </form>
+</ion-content>

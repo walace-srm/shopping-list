@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{'Minha Lista' | uppercase}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngFor="let item of items" style="background-color: ghostwhite;">
+    <hr>
+    <ion-row style="padding-bottom: 8px; padding-top: 8px; padding-left: 8px">
+      <ion-col size="1">
+        <div>
+          <ion-checkbox slot="start" [(ngModel)]="item.checked"
+                        (ngModelChange)="checked(item, item.key)"></ion-checkbox>
+        </div>
+      </ion-col>
+      <ion-col size="7">
+        <ion-label>{{item.name}}</ion-label>
+      </ion-col>
+      <ion-col size="1">
+        <ion-label>{{item.quantity}}</ion-label>
+      </ion-col>
+      <ion-col size="2">
+        <ion-icon name="create-outline" (click)="edit(item, item.key)"></ion-icon>
+      </ion-col>
+      <ion-col size="1">
+        <ion-icon name="trash-outline" (click)="presentActionSheet(item.key)"></ion-icon>
+      </ion-col>
+    </ion-row>
+    <!--TODO: Remover layout ion item-->
+
+    <!--    <ion-item color="light">-->
+    <!--      <div class="size=">-->
+    <!--        <ion-checkbox slot="start" [(ngModel)]="item.checked" (ngModelChange)="checked(item, item.key)"></ion-checkbox>-->
+    <!--      </div>-->
+    <!--      <ion-label>{{item.name}}</ion-label>-->
+    <!--      <ion-label>{{item.quantity}}</ion-label>-->
+    <!--      <ion-icon name="create-outline" (click)="edit(item, item.key)"></ion-icon>-->
+    <!--      <ion-icon name="trash-outline" (click)="presentActionSheet(item.key)"></ion-icon>-->
+    <!--    </ion-item>-->
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openCreatePage()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

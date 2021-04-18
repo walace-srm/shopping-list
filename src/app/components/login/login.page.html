@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="">{{ 'Lista de compras' | uppercase }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="login"[formGroup]="loginForm">
+    <h3>Entrar</h3>
+    <div>
+      <input type="text" class="formControl" placeholder="Entre com seu e-mail" formControlName="email" required>
+    </div>
+
+    <div>
+      <input type="password" class="formControl" placeholder="Insira sua senha" formControlName="password" required>
+    </div>
+
+    <div class="ion-padding-top">
+      <input type="button" class="btn-primary" value="Entrar" (click)="onSubmit(loginForm)">
+    </div>
+
+    <div class="ion-padding-top">
+      <a routerLink="/forgot-password">Esqueceu sua senha?</a>
+    </div>
+
+    <div class="sign-up">
+      <span>Não tem conta? <a routerLink="/sign-up">Inscrever-se</a></span>
+    </div>
+  </div>
+</ion-content>
