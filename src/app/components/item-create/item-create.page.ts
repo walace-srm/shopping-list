@@ -1,20 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ItemService} from '../../services/item.service';
 import {ToastController} from '@ionic/angular';
 import {ItemDataService} from '../../services/item-data.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-item-create',
   templateUrl: './item-create.page.html',
   styleUrls: ['./item-create.page.scss'],
 })
-export class ItemCreatePage implements OnInit {
+export class ItemCreatePage implements OnInit, OnDestroy {
   public itemForm: FormGroup;
-  public key: string = '';
-  public counter: number = 1;
+  public key = '';
+  public counter = 1;
   public event;
+
+  public readonly subscriptions: Subscription[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -33,9 +36,17 @@ export class ItemCreatePage implements OnInit {
     this.pathItem();
   }
 
+  ngOnDestroy(): void {
+    console.log('Passou aqui');
+    this.subscriptions.forEach(
+      subscription => subscription.unsubscribe && subscription.unsubscribe()
+    );
+  }
+
   pathItem() {
-    this.itemDataService.currentItem.subscribe(data => {
-      this.key = data.key;
+    const currentItemSub = this.itemDataService.currentItem.subscribe(data => {
+      console.log(data);
+      this.key = data?.key;
       if (data.item) {
         this.itemForm.patchValue({
           name: data.item.name,
@@ -43,6 +54,7 @@ export class ItemCreatePage implements OnInit {
         });
       }
     });
+    this.subscriptions.push(currentItemSub);
   }
 
   goToHome() {

@@ -46,13 +46,14 @@ export class HomePage implements OnInit {
       header: 'Ações',
       cssClass: 'my-custom-class',
       buttons: [
-        {
-          text: 'Editar',
-          icon: 'pencil-outline',
-          handler: () => {
-            this.edit(this.items, key);
-          }
-        },
+        // TODO: Remover
+        // {
+        //   text: 'Editar',
+        //   icon: 'pencil-outline',
+        //   handler: () => {
+        //     this.edit(this.items, key);
+        //   }
+        // },
         {
           text: 'Excluir',
           role: 'destructive',
@@ -62,7 +63,7 @@ export class HomePage implements OnInit {
           }
         },
         {
-          text: 'Cancel',
+          text: 'Cancelar',
           icon: 'close',
           role: 'cancel',
           handler: () => {
@@ -74,6 +75,7 @@ export class HomePage implements OnInit {
   }
 
   openCreatePage() {
+    this.itemDataService.changeItem(null, '');
     this.router.navigate(['/item-create']);
   }
 

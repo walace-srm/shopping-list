@@ -33,3 +33,21 @@
   display: block;
   color: darkblue;
 }
+
+.btn-google {
+  width: 100%;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 15px 0;
+  color: #ffffff;
+  cursor: pointer;
+  outline: none;
+  background: #eb5e4c;
+}
+
+.position {
+  position: relative;
+  top: -2px;
+  left: 3px
+}

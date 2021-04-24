@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>{{key ? 'Atualizar Item' : 'Adicionar Item'}}</ion-title>
+    <ion-title>{{ key ? ('Atualizar Item' | uppercase) : ('Adicionar Item' | uppercase) }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
