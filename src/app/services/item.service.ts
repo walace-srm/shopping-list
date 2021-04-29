@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {map} from 'rxjs/operators';
 import {Item} from '../models/item.model';
+import {Subscription} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,8 @@ export class ItemService {
   ) {
     this.fetchUid();
   }
+
+  dispatch() {}
 
   fetchUid() {
     const a = JSON.parse(localStorage.getItem('user'));

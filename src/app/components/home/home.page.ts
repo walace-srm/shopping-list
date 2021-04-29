@@ -1,17 +1,19 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {ActionSheetController, AlertController, ModalController, ToastController} from '@ionic/angular';
 import {ItemService} from '../../services/item.service';
 import {Router} from '@angular/router';
 import {Item} from '../../models/item.model';
 import {ItemDataService} from '../../services/item-data.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage implements OnInit, OnDestroy {
   public items: any = [];
+  public subscriptions: Array<Subscription> = [] ;
 
   constructor(
     private alertCtrl: AlertController,
@@ -21,16 +23,26 @@ export class HomePage implements OnInit {
     private router: Router,
     private itemDataService: ItemDataService,
   ) {
+    this.fetchItem();
+    console.log('Passou no construtor');
   }
 
   ngOnInit() {
-    this.fetchItem();
+    console.log('Passou no init');
+  }
+
+  ngOnDestroy() {
+    console.log('OnDestroy da home');
+    this.subscriptions.forEach(
+      subscription => subscription.unsubscribe && subscription.unsubscribe()
+    );
   }
 
   fetchItem() {
-    this.itemService.getAll().subscribe(data => {
+    const a = this.itemService.getAll().subscribe(data => {
       this.items = data;
     });
+    this.subscriptions.push(a);
   }
 
   checked(item, key) {

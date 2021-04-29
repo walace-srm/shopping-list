@@ -43,7 +43,7 @@ export class LoginPage implements OnInit {
     }
     this.loginService.login(value.email, value.password).then(() => {
       this.loginForm.reset();
-      this.router.navigate(['home']);
+      this.router.navigate(['home'], { replaceUrl: true });
     }).catch(async (error) => {
       if (error.code === 'auth/user-not-found') {
         const emailNotFound = await this.toastController.create({

@@ -21,6 +21,7 @@ export class LoginService {
     private router: Router
   ) {
     this.angularFireAuth.authState.subscribe(user => {
+      console.log(user);
       if (user) {
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
@@ -34,7 +35,6 @@ export class LoginService {
   AuthLogin(provider) {
     return this.angularFireAuth.signInWithPopup(provider)
       .then((result) => {
-        console.log(result);
         this.ngZone.run(() => {
           this.router.navigate(['home']);
         });
