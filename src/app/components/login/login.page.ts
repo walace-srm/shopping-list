@@ -1,3 +1,4 @@
+import { ItemService } from './../../services/item.service';
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LoginService} from '../../services/login.service';
@@ -16,7 +17,8 @@ export class LoginPage implements OnInit {
     private formBuilder: FormBuilder,
     private loginService: LoginService,
     private router: Router,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private itemService: ItemService
   ) {
   }
 
@@ -41,7 +43,9 @@ export class LoginPage implements OnInit {
     if (!valid) {
       return this.requiredFields();
     }
-    this.loginService.login(value.email, value.password).then(() => {
+    this.loginService.login(value.email, value.password).then((data) => {
+      localStorage.setItem('user', JSON.stringify(data.user));
+      this.itemService.fetchUid();
       this.loginForm.reset();
       this.router.navigate(['home'], { replaceUrl: true });
     }).catch(async (error) => {
