@@ -76,4 +76,8 @@ export class LoginPage implements OnInit {
     });
   }
 
+  onSubmitGoogle() {
+    this.loginService.googleAuth();
+  }
+
 }

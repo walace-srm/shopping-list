@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ key ? ('Atualizar Item' | uppercase) : ('Adicionar Item' | uppercase) }}</ion-title>
+    <ion-title>{{ key ? ('Editar Item' | uppercase) : ('Adicionar Item' | uppercase) }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -22,10 +22,6 @@
           <input type="button" value="+" (click)="increment()"/>
         </div>
       </ion-item>
-      <!-- TODO: Remover depois que vericar o input number -->
-      <!--      <ion-item>-->
-      <!--        <ion-input type="number" placeholder="Quantidade" formControlName="quantity"></ion-input>-->
-      <!--      </ion-item>-->
     </div>
     <div class="ion-padding" style="display: flex; justify-content: flex-end;">
       <ion-button color="medium" (click)="goToHome()">Cancelar</ion-button>

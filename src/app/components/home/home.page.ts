@@ -22,27 +22,23 @@ export class HomePage implements OnInit, OnDestroy {
     private actionSheetController: ActionSheetController,
     private router: Router,
     private itemDataService: ItemDataService,
-  ) {
-    this.fetchItem();
-    console.log('Passou no construtor');
-  }
+  ) {}
 
   ngOnInit() {
-    console.log('Passou no init');
+    this.fetchItem();
   }
 
   ngOnDestroy() {
-    console.log('OnDestroy da home');
     this.subscriptions.forEach(
       subscription => subscription.unsubscribe && subscription.unsubscribe()
     );
   }
 
   fetchItem() {
-    const a = this.itemService.getAll().subscribe(data => {
+    const item = this.itemService.getAll().subscribe(data => {
       this.items = data;
     });
-    this.subscriptions.push(a);
+    this.subscriptions.push(item);
   }
 
   checked(item, key) {
@@ -58,14 +54,6 @@ export class HomePage implements OnInit, OnDestroy {
       header: 'Ações',
       cssClass: 'my-custom-class',
       buttons: [
-        // TODO: Remover
-        // {
-        //   text: 'Editar',
-        //   icon: 'pencil-outline',
-        //   handler: () => {
-        //     this.edit(this.items, key);
-        //   }
-        // },
         {
           text: 'Excluir',
           role: 'destructive',

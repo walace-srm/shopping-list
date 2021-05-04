@@ -20,8 +20,8 @@ export class ItemService {
   dispatch() {}
 
   fetchUid() {
-    const a = JSON.parse(localStorage.getItem('user'));
-    this.uid = a?.uid || null;
+    const userId = JSON.parse(localStorage.getItem('user'));
+    this.uid = userId?.uid || null;
   }
 
   insert(item: Item) {

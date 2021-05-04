@@ -14,7 +14,8 @@ import {Subscription} from 'rxjs';
 export class ItemCreatePage implements OnInit, OnDestroy {
   public itemForm: FormGroup;
   public key = '';
-  public counter = 1;
+  // @ts-ignore
+  public counter = this.itemForm?.value.quantity || 1;
   public event;
 
   public readonly subscriptions: Subscription[] = [];
@@ -26,7 +27,8 @@ export class ItemCreatePage implements OnInit, OnDestroy {
     private toastCtrl: ToastController,
     private route: ActivatedRoute,
     private itemDataService: ItemDataService
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.itemForm = this.formBuilder.group({
@@ -34,10 +36,10 @@ export class ItemCreatePage implements OnInit, OnDestroy {
       quantity: [1, Validators.required]
     });
     this.pathItem();
+    this.counter = this.itemForm.value.quantity;
   }
 
   ngOnDestroy(): void {
-    console.log('Passou aqui');
     this.subscriptions.forEach(
       subscription => subscription.unsubscribe && subscription.unsubscribe()
     );
@@ -45,7 +47,6 @@ export class ItemCreatePage implements OnInit, OnDestroy {
 
   pathItem() {
     const currentItemSub = this.itemDataService.currentItem.subscribe(data => {
-      console.log(data);
       this.key = data?.key;
       if (data.item) {
         this.itemForm.patchValue({
@@ -59,11 +60,6 @@ export class ItemCreatePage implements OnInit, OnDestroy {
 
   goToHome() {
     this.router.navigate(['/home']);
-    if (this.key) {
-      this.itemForm.reset({
-        quantity: this.counter
-      });
-    }
   }
 
   increment() {
@@ -75,7 +71,10 @@ export class ItemCreatePage implements OnInit, OnDestroy {
   }
 
   decrement() {
+    if (this.counter <= 1) return;
+
     this.counter -= 1;
+
     if (this.event) {
       this.counter = this.event -= 1;
     }
@@ -100,14 +99,8 @@ export class ItemCreatePage implements OnInit, OnDestroy {
     }
     if (this.key) {
       this.itemService.update(value, this.key);
-      this.itemForm.reset({
-        quantity: this.counter
-      });
     } else {
       this.itemService.insert(value);
-      this.itemForm.reset({
-        quantity: this.counter
-      });
     }
     this.router.navigate(['home']);
   }

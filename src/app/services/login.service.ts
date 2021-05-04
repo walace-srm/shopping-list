@@ -21,7 +21,6 @@ export class LoginService {
     private router: Router
   ) {
     this.angularFireAuth.authState.subscribe(user => {
-      console.log(user);
       if (user) {
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
