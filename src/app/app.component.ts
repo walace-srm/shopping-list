@@ -14,9 +14,7 @@ export class AppComponent implements OnDestroy{
     private menuController: MenuController
   ) {}
 
-  ngOnDestroy() {
-    console.log('Destruiu');
-  }
+  ngOnDestroy() {}
 
   logout() {
     this.loginService.logout();

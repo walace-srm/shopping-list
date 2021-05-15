@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "681756275232",
+    "firebase_url": "https://my-firebase-fdd64-default-rtdb.firebaseio.com",
+    "project_id": "my-firebase-fdd64",
+    "storage_bucket": "my-firebase-fdd64.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:681756275232:android:e47d6cece72bfcd2088245",
+        "android_client_info": {
+          "package_name": "shopping.list.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "681756275232-rjkfj759qehviq61m0euh5k1f7lt56p3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "shopping.list.com",
+            "certificate_hash": "2381dcef68a8b1ca58b3cb2c5a101af9cc8b1191"
+          }
+        },
+        {
+          "client_id": "681756275232-juon5klhq89bmdmuuuphhlqigohd7jad.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByNI8CzLDzc0KjV9k8ejAqTvGnGCSIRk8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "681756275232-juon5klhq89bmdmuuuphhlqigohd7jad.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

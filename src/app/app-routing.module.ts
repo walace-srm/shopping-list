@@ -30,6 +30,14 @@ const routes: Routes = [
   {
     path: 'item-create',
     loadChildren: () => import('./components/item-create/item-create.module').then( m => m.ItemCreatePageModule)
+  },
+  {
+    path: 'release-notes',
+    loadChildren: () => import('./components/release-notes/release-notes.module').then( m => m.ReleaseNotesPageModule)
+  },
+  {
+    path: 'about',
+    loadChildren: () => import('./components/about/about.module').then( m => m.AboutPageModule)
   }
 ];
 

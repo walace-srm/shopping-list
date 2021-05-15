@@ -3,24 +3,25 @@
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
         <ion-list id="inbox-list">
-          <ion-list-header>Minha Lista</ion-list-header>
-          <ion-note>colocar alguma coisa aqui</ion-note>
+          <ion-list-header>{{ 'Lista de Compras' }}</ion-list-header>
+          <ion-note>Um aplicativo simples para fazer uma lista do que precisamos comprar!</ion-note>
         </ion-list>
 
         <ion-list>
           <ion-item >
             <ion-icon slot="start" name="document-text-outline"></ion-icon>
-            <ion-label>{{ 'Nota da versão' }}</ion-label>
+            <ion-label routerLink="/release-notes" >{{ 'Nota da versão' }}</ion-label>
           </ion-item>
           <ion-item >
             <ion-icon slot="start" ios="bookmark-outline" md="bookmark-sharp"></ion-icon>
-            <ion-label>{{ 'Sobre' }}</ion-label>
+            <ion-label routerLink="/about">{{ 'Sobre' }}</ion-label>
           </ion-item>
           <ion-item >
             <ion-icon slot="start" name="power-outline"></ion-icon>
             <ion-label (click)="logout()">{{ 'Sair' }}</ion-label>
           </ion-item>
         </ion-list>
+        <img src="assets/images/car-about.png" style="padding-left: 16px;">
       </ion-content>
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>
