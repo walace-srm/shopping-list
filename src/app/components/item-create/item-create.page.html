@@ -14,12 +14,17 @@
         <ion-input placeholder="Novo do item" formControlName="name"></ion-input>
       </ion-item>
       <ion-item>
-        <div>
-          <input type="button" class="button" value="-" (click)="decrement()"/>
-          <input
-            type="number" min="0" max="999" [value]="counter" formControlName="quantity"
-            style="text-align: center;" (ngModelChange)="inputEvent($event)"/>
-          <input type="button" value="+" (click)="increment()"/>
+        <div style="display: flex;">
+          <div>
+            <p>Quantidade</p>
+          </div>
+          <div style="align-self: center; padding-left: 16px;">
+            <input type="button" class="button" value="-" (click)="decrement()"/>
+            <input
+              type="number" min="0" max="999" [value]="counter" formControlName="quantity"
+              style="text-align: center;" (ngModelChange)="inputEvent($event)"/>
+            <input type="button" value="+" (click)="increment()"/>
+          </div>
         </div>
       </ion-item>
     </div>

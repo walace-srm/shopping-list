@@ -5,7 +5,7 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content class="ion-padding-top">
   <div class="login"[formGroup]="loginForm">
     <h3>Entrar</h3>
     <div>
@@ -19,13 +19,14 @@
     <div class="ion-padding-top">
       <input type="button" class="btn-primary" value="Entrar" (click)="onSubmit(loginForm)">
     </div><br>
-    <b>Ou</b>
-    <div class="formGroup ion-padding-top">
-      <button type="button" class="btn-google" (click)="onSubmitGoogle()">
-        <ion-icon name="logo-google"></ion-icon>
-        <span class="position">Entre com a conta Google</span>
-      </button>
-    </div>
+<!--    TODO: Será implementado depois-->
+<!--    <b>Ou</b>-->
+<!--    <div class="formGroup ion-padding-top">-->
+<!--      <button type="button" class="btn-google" (click)="onSubmitGoogle()">-->
+<!--        <ion-icon name="logo-google"></ion-icon>-->
+<!--        <span class="position">Entre com a conta Google</span>-->
+<!--      </button>-->
+<!--    </div>-->
 
 
     <div class="ion-padding-top">
